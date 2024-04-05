@@ -18,8 +18,7 @@ public class PropertyDto {
     private int numberOfBedrooms;
     private Double latitude;
     private Double longitude;
-    private String description;
-    private String contactEmail;
     private String contactPhone;
-
+    private String contactEmail;
+    private String description;
 }

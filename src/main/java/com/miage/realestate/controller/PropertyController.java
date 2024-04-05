@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/properties")
 @AllArgsConstructor
 public class PropertyController{
     private PropertyService propertyService;
@@ -25,6 +25,12 @@ public class PropertyController{
     public ResponseEntity<List<PropertyDto>> getAllProperties(){
         List<PropertyDto> allProperties = propertyService.getAllProperty();
         return new ResponseEntity<>(allProperties, HttpStatus.OK);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<PropertyDto> updatePropertyById(@PathVariable Long id, @RequestBody PropertyDto propertyDto){
+        PropertyDto updatedProperty = propertyService.updateProperty(id,propertyDto );
+        return new ResponseEntity<>(updatedProperty, HttpStatus.OK);
     }
 
 
