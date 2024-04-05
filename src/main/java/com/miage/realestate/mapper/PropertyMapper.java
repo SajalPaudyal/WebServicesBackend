@@ -30,9 +30,9 @@ public class PropertyMapper {
                 propertyDto.getNumberOfBedrooms(),
                 propertyDto.getLatitude(),
                 propertyDto.getLongitude(),
-                propertyDto.getDescription(),
+                propertyDto.getContactPhone(),
                 propertyDto.getContactEmail(),
-                propertyDto.getContactPhone()
+                propertyDto.getDescription()
                 );
     }
 }

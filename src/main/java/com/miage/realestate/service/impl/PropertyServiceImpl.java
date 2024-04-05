@@ -29,9 +29,21 @@ public class PropertyServiceImpl implements PropertyService {
         List<Property> properties = propertyRepository.findAll();
         return properties.stream().map(PropertyMapper::mapToPropertyDto).collect(Collectors.toList());
     }
-//
-//    public PropertyDto updateProperty(Long id, PropertyDto propertyDto){
-//        Property existingProperty = propertyRepository.findById(id).orElseThrow(()-> )
-//    }
+
+    public PropertyDto updateProperty(Long id, PropertyDto propertyDto){
+        Property existingProperty = propertyRepository.findById(id).orElseThrow(NullPointerException::new);
+        existingProperty.setAddress(propertyDto.getAddress());
+        existingProperty.setDescription(propertyDto.getDescription());
+        existingProperty.setLatitude(propertyDto.getLatitude());
+        existingProperty.setLongitude(propertyDto.getLongitude());
+        existingProperty.setPrice(propertyDto.getPrice());
+        existingProperty.setContactPhone(propertyDto.getContactPhone());
+        existingProperty.setContactEmail(propertyDto.getContactEmail());
+        existingProperty.setLatitude(propertyDto.getLatitude());
+        existingProperty.setLongitude(propertyDto.getLongitude());
+
+        propertyRepository.save(existingProperty);
+        return PropertyMapper.mapToPropertyDto(existingProperty);
+    }
 
 }
