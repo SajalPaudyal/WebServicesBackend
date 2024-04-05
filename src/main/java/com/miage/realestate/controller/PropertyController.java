@@ -33,7 +33,10 @@ public class PropertyController{
         return new ResponseEntity<>(updatedProperty, HttpStatus.OK);
     }
 
-
-
+    @DeleteMapping("/{id}")
+    public ResponseEntity<PropertyDto> deletePropertyById(@PathVariable Long id){
+        PropertyDto deletedProperty = propertyService.deleteById(id);
+        return new ResponseEntity<>(deletedProperty, HttpStatus.OK);
+    }
 
 }

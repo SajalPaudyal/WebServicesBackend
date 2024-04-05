@@ -10,5 +10,7 @@ public interface PropertyService {
     List<PropertyDto> getAllProperty();
 
     PropertyDto updateProperty(Long PropertyId, PropertyDto propertyDto);
+
+    PropertyDto deleteById(Long propertyId);
 }
 
