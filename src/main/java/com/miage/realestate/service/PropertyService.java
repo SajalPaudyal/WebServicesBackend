@@ -12,5 +12,7 @@ public interface PropertyService {
     PropertyDto updateProperty(Long PropertyId, PropertyDto propertyDto);
 
     PropertyDto deleteById(Long propertyId);
+
+    PropertyDto getPropertyById(Long propertyID);
 }
 
