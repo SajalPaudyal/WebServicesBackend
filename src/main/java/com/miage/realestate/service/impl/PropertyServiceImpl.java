@@ -52,4 +52,9 @@ public class PropertyServiceImpl implements PropertyService {
         return PropertyMapper.mapToPropertyDto(existingProperty);
     }
 
+    public PropertyDto getPropertyById(Long id){
+        Property existingProperty  =  propertyRepository.findById(id).orElseThrow(NullPointerException::new);
+        return PropertyMapper.mapToPropertyDto(existingProperty);
+    }
+
 }
