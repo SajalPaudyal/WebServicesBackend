@@ -21,4 +21,5 @@ public class PropertyDto {
     private String contactPhone;
     private String contactEmail;
     private String description;
+    private String imageUrl;
 }
