@@ -35,5 +35,7 @@ public class Property {
     private String contactEmail;
     @Column(name = "contact_phone")
     private String contactPhone;
+    @Column(name = "image_url")
+    private String imageUrl;
 
 }
