@@ -8,6 +8,9 @@ import com.miage.realestate.service.PropertyService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 
 @Service
 @AllArgsConstructor
@@ -21,4 +24,14 @@ public class PropertyServiceImpl implements PropertyService {
         Property savedProperty = propertyRepository.save(property);
         return PropertyMapper.mapToPropertyDto(savedProperty);
     }
+
+    public List<PropertyDto> getAllProperty(){
+        List<Property> properties = propertyRepository.findAll();
+        return properties.stream().map(PropertyMapper::mapToPropertyDto).collect(Collectors.toList());
+    }
+//
+//    public PropertyDto updateProperty(Long id, PropertyDto propertyDto){
+//        Property existingProperty = propertyRepository.findById(id).orElseThrow(()-> )
+//    }
+
 }
