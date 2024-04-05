@@ -39,4 +39,10 @@ public class PropertyController{
         return new ResponseEntity<>(deletedProperty, HttpStatus.OK);
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<PropertyDto> getPropertyById(@PathVariable Long id){
+        PropertyDto foundProperty = propertyService.getPropertyById(id);
+        return new ResponseEntity<>(foundProperty, HttpStatus.FOUND);
+    }
+
 }
