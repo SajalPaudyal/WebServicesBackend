@@ -46,4 +46,10 @@ public class PropertyServiceImpl implements PropertyService {
         return PropertyMapper.mapToPropertyDto(existingProperty);
     }
 
+    public PropertyDto deleteById(Long id){
+        Property existingProperty = propertyRepository.findById(id).orElseThrow(NullPointerException::new);
+        propertyRepository.deleteById(id);
+        return PropertyMapper.mapToPropertyDto(existingProperty);
+    }
+
 }
