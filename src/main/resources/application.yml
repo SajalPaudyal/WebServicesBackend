@@ -8,5 +8,11 @@ spring:
     database-platform: org.hibernate.dialect.MySQL8Dialect
     hibernate:
       ddl-auto: update
+  security:
+    user:
+      name: Sajal
+      password: Hello@123
+      roles: ADMIN, USER
 server:
   port: 8181
+
