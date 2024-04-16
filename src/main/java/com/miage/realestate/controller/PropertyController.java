@@ -12,6 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/properties")
+@CrossOrigin(origins = "http://localhost:3000")
 @AllArgsConstructor
 public class PropertyController{
     private PropertyService propertyService;
@@ -23,7 +24,7 @@ public class PropertyController{
         return new ResponseEntity<>(savedProperty, HttpStatus.CREATED);
     }
 
-    @PreAuthorize("hasAnyRole('ADMIN', 'USER')")
+    @PreAuthorize("permitAll()")
     @GetMapping
     public ResponseEntity<List<PropertyDto>> getAllProperties(){
         List<PropertyDto> allProperties = propertyService.getAllProperty();
@@ -44,11 +45,11 @@ public class PropertyController{
         return new ResponseEntity<>(deletedProperty, HttpStatus.OK);
     }
 
-    @PreAuthorize("hasAnyRole('ADMIN', 'USER')")
+    @PreAuthorize("permitAll()")
     @GetMapping("/{id}")
     public ResponseEntity<PropertyDto> getPropertyById(@PathVariable Long id){
         PropertyDto foundProperty = propertyService.getPropertyById(id);
-        return new ResponseEntity<>(foundProperty, HttpStatus.FOUND);
+        return new ResponseEntity<>(foundProperty, HttpStatus.OK);
     }
 
 }
