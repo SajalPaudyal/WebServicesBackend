@@ -22,4 +22,5 @@ public class PropertyDto {
     private String contactEmail;
     private String description;
     private String imageUrl;
+    private Boolean isForRent;
 }

@@ -38,4 +38,7 @@ public class Property {
     @Column(name = "image_url")
     private String imageUrl;
 
+    @Column(name = "is_for_rent")
+    private Boolean isForRent;
+
 }

@@ -18,7 +18,8 @@ public class PropertyMapper {
                 property.getContactPhone(),
                 property.getContactEmail(),
                 property.getDescription(),
-                property.getImageUrl()
+                property.getImageUrl(),
+                property.getIsForRent()
         );
     }
 
@@ -34,7 +35,8 @@ public class PropertyMapper {
                 propertyDto.getContactPhone(),
                 propertyDto.getContactEmail(),
                 propertyDto.getDescription(),
-                propertyDto.getImageUrl()
+                propertyDto.getImageUrl(),
+                propertyDto.getIsForRent()
                 );
     }
 }

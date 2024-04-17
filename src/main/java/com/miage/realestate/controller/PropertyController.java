@@ -9,6 +9,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.stream.Stream;
 
 @RestController
 @RequestMapping("/api/properties")
@@ -26,10 +27,21 @@ public class PropertyController{
 
     @PreAuthorize("permitAll()")
     @GetMapping
-    public ResponseEntity<List<PropertyDto>> getAllProperties(){
+
+    public ResponseEntity<List<PropertyDto>> getAllProperties(@RequestParam(value = "isForRent" ,required = false)Boolean isForRent,@RequestParam(value = "search" ,required = false)String search){
         List<PropertyDto> allProperties = propertyService.getAllProperty();
+        if(isForRent != null && isForRent){
+            Stream<PropertyDto> propertyStream = allProperties.stream().filter(property -> property.getIsForRent() == isForRent);
+            allProperties = propertyStream.toList();
+        }
+
+        if(search != null && !search.equals("null") && !search.isEmpty()){
+            Stream<PropertyDto> propertyStream = allProperties.stream().filter(property -> property.getAddress().contains(search));
+            allProperties = propertyStream.toList();
+        }
         return new ResponseEntity<>(allProperties, HttpStatus.OK);
     }
+
 
     @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/{id}")
