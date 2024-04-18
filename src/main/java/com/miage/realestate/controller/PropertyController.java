@@ -20,7 +20,7 @@ public class PropertyController{
 
     @PreAuthorize("hasRole('ADMIN')")
     @PostMapping
-    public ResponseEntity<PropertyDto> createEmployee(@RequestBody PropertyDto propertyDto){
+    public ResponseEntity<PropertyDto> createProperty(@RequestBody PropertyDto propertyDto){
         PropertyDto savedProperty = propertyService.createProperty(propertyDto);
         return new ResponseEntity<>(savedProperty, HttpStatus.CREATED);
     }
