@@ -6,6 +6,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 @Getter
 @Setter
@@ -41,4 +43,9 @@ public class Property {
     @Column(name = "is_for_rent")
     private Boolean isForRent;
 
+   // add a new foreign key to table pointing to user id
+    @ManyToOne
+    @JoinColumn(name="user_id")
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    private User user;
 }

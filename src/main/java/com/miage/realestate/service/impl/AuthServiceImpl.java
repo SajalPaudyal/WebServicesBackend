@@ -58,7 +58,7 @@ public class AuthServiceImpl implements AuthService {
     }
 
     @Override
-    public String login(LoginDto loginDto) {
+    public User login(LoginDto loginDto) {
 
         Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
                 loginDto.getUserNameOrEmail(),
@@ -66,6 +66,10 @@ public class AuthServiceImpl implements AuthService {
         ));
 
         SecurityContextHolder.getContext().setAuthentication(authentication);
-        return "User Logged-in Successfully";
+
+        User user = userRepository.findByUsername(loginDto.getUserNameOrEmail()).orElseThrow(() -> new ApiException(HttpStatus.BAD_REQUEST, "User Not Found")
+        );
+
+        return user;
     }
 }

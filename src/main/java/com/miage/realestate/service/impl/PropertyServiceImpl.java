@@ -37,6 +37,8 @@ public class PropertyServiceImpl implements PropertyService {
         existingProperty.setLatitude(propertyDto.getLatitude());
         existingProperty.setLongitude(propertyDto.getLongitude());
         existingProperty.setPrice(propertyDto.getPrice());
+        existingProperty.setNumberOfBedrooms(propertyDto.getNumberOfBedrooms());
+        existingProperty.setNumberOfBathrooms(propertyDto.getNumberOfBathrooms());
         existingProperty.setContactPhone(propertyDto.getContactPhone());
         existingProperty.setContactEmail(propertyDto.getContactEmail());
         existingProperty.setLatitude(propertyDto.getLatitude());

@@ -36,7 +36,7 @@ public class PropertyController{
         }
 
         if(search != null && !search.equals("null") && !search.isEmpty()){
-            Stream<PropertyDto> propertyStream = allProperties.stream().filter(property -> property.getAddress().contains(search));
+            Stream<PropertyDto> propertyStream = allProperties.stream().filter(property -> property.getAddress().contains(search) || property.getDescription().contains(search));
             allProperties = propertyStream.toList();
         }
         return new ResponseEntity<>(allProperties, HttpStatus.OK);

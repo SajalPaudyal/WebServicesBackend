@@ -2,6 +2,7 @@ package com.miage.realestate.controller;
 
 import com.miage.realestate.dto.LoginDto;
 import com.miage.realestate.dto.RegisterDto;
+import com.miage.realestate.entity.User;
 import com.miage.realestate.service.AuthService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -23,8 +24,10 @@ public class AuthController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<String> login(@RequestBody LoginDto loginDto){
-        String response = authService.login(loginDto);
+    public ResponseEntity<User> login(@RequestBody LoginDto loginDto){
+        User response = authService.login(loginDto);
+
+        //get user response
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 }
