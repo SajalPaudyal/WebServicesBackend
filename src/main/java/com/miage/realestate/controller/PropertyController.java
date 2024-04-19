@@ -30,15 +30,19 @@ public class PropertyController{
 
     public ResponseEntity<List<PropertyDto>> getAllProperties(@RequestParam(value = "isForRent" ,required = false)Boolean isForRent,@RequestParam(value = "search" ,required = false)String search){
         List<PropertyDto> allProperties = propertyService.getAllProperty();
-        if(isForRent != null && isForRent){
+        if(isForRent != null){
             Stream<PropertyDto> propertyStream = allProperties.stream().filter(property -> property.getIsForRent() == isForRent);
             allProperties = propertyStream.toList();
         }
 
-        if(search != null && !search.equals("null") && !search.isEmpty()){
+
+
+       else if(search != null && !search.equals("null") && !search.isEmpty()){
             Stream<PropertyDto> propertyStream = allProperties.stream().filter(property -> property.getAddress().contains(search) || property.getDescription().contains(search));
             allProperties = propertyStream.toList();
         }
+
+
         return new ResponseEntity<>(allProperties, HttpStatus.OK);
     }
 

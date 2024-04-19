@@ -44,6 +44,7 @@ public class PropertyServiceImpl implements PropertyService {
         existingProperty.setLatitude(propertyDto.getLatitude());
         existingProperty.setLongitude(propertyDto.getLongitude());
         existingProperty.setImageUrl(propertyDto.getImageUrl());
+        existingProperty.setIsForRent(propertyDto.getIsForRent());
 
         propertyRepository.save(existingProperty);
         return PropertyMapper.mapToPropertyDto(existingProperty);
