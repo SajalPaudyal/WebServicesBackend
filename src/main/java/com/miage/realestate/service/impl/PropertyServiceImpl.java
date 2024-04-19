@@ -43,6 +43,7 @@ public class PropertyServiceImpl implements PropertyService {
         existingProperty.setContactEmail(propertyDto.getContactEmail());
         existingProperty.setLatitude(propertyDto.getLatitude());
         existingProperty.setLongitude(propertyDto.getLongitude());
+        existingProperty.setImageUrl(propertyDto.getImageUrl());
 
         propertyRepository.save(existingProperty);
         return PropertyMapper.mapToPropertyDto(existingProperty);

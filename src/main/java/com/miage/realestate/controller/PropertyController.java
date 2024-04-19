@@ -18,7 +18,7 @@ import java.util.stream.Stream;
 public class PropertyController{
     private PropertyService propertyService;
 
-    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
     @PostMapping
     public ResponseEntity<PropertyDto> createProperty(@RequestBody PropertyDto propertyDto){
         PropertyDto savedProperty = propertyService.createProperty(propertyDto);
